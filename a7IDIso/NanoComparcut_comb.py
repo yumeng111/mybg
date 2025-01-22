@@ -405,33 +405,33 @@ def EventsDistribution_hist(mass_point,df):
 
 def comparecut_hist(mass_point, df):
 # ##################################################Ele ID: 
-    cuts = [
-        f"{mychfull}_mvaNoIso_WP80.at(RecoLepIdx)",
-        f"{mychfull}_mvaNoIso_WP90.at(RecoLepIdx)",
+#     cuts = [
+#         f"{mychfull}_mvaNoIso_WP80.at(RecoLepIdx)",
+#         f"{mychfull}_mvaNoIso_WP90.at(RecoLepIdx)",
 
-        f"{mychfull}_cutBased_HEEP.at(RecoLepIdx)",
+#         f"{mychfull}_cutBased_HEEP.at(RecoLepIdx)",
 
-        # f"HLT_Ele115_CaloIdVT_GsfTrkIdT",
-        # f"HLT_Ele135_CaloIdVT_GsfTrkIdT",
-        # f"HLT_Ele145_CaloIdVT_GsfTrkIdT",
-        # f"HLT_Ele200_CaloIdVT_GsfTrkIdT",
-        # f"HLT_Ele250_CaloIdVT_GsfTrkIdT",
-        # f"HLT_Ele300_CaloIdVT_GsfTrkIdT",
- ]
+#         # f"HLT_Ele115_CaloIdVT_GsfTrkIdT",
+#         # f"HLT_Ele135_CaloIdVT_GsfTrkIdT",
+#         # f"HLT_Ele145_CaloIdVT_GsfTrkIdT",
+#         # f"HLT_Ele200_CaloIdVT_GsfTrkIdT",
+#         # f"HLT_Ele250_CaloIdVT_GsfTrkIdT",
+#         # f"HLT_Ele300_CaloIdVT_GsfTrkIdT",
+#  ]
 
-    labels = [
-    "mvaNoIso_80",
-    "mvaNoIso_90",
+#     labels = [
+#     "mvaNoIso_80",
+#     "mvaNoIso_90",
 
-    "cutBased_HEEP",
+#     "cutBased_HEEP",
 
-    # "HLT_Ele115",
-    # "HLT_Ele135",
-    # "HLT_Ele145",
-    # "HLT_Ele200",
-    # "HLT_Ele250",
-    # "HLT_Ele300",
-]
+#     # "HLT_Ele115",
+#     # "HLT_Ele135",
+#     # "HLT_Ele145",
+#     # "HLT_Ele200",
+#     # "HLT_Ele250",
+#     # "HLT_Ele300",
+# ]
 
     
 # ##################################################Ele: 
@@ -566,6 +566,71 @@ def comparecut_hist(mass_point, df):
 #     "minipfRelIso03_all<0.15",  # Isolation < 0.15
 #     ]
     
+     ##################################################Muon ID&&miniPFIso:
+    cuts = [
+    # Loose ID && PFRelIso cuts
+    f"{mychfull}_looseId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.4 ",  # Loose ID, Isolation < 0.4
+    f"{mychfull}_looseId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.25 ", # Loose ID, Isolation < 0.25
+    f"{mychfull}_looseId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.2 ",  # Loose ID, Isolation < 0.2
+    f"{mychfull}_looseId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.15", # Loose ID, Isolation < 0.15
+
+    # Medium ID && PFRelIso cuts
+    f"{mychfull}_mediumId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.4 ",  # Medium ID, Isolation < 0.4
+    f"{mychfull}_mediumId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.25", # Medium ID, Isolation < 0.25
+    f"{mychfull}_mediumId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.2 ",  # Medium ID, Isolation < 0.2
+    f"{mychfull}_mediumId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.15", # Medium ID, Isolation < 0.15
+
+    # Tight ID && PFRelIso cuts
+    f"{mychfull}_tightId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.4 ",  # Tight ID, Isolation < 0.4
+    f"{mychfull}_tightId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.25", # Tight ID, Isolation < 0.25
+    f"{mychfull}_tightId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.2  ",  # Tight ID, Isolation < 0.2
+    f"{mychfull}_tightId.at(RecoLepIdx) && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.15", # Tight ID, Isolation < 0.15
+
+    # tracker highPt ID && PFRelIso cuts
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=1 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.4 ", 
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=1 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.25 ",
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=1 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.2 ", 
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=1 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.15", 
+
+    # global highPt ID && PFRelIso cuts
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=2 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.4 ", 
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=2 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.25 ",
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=2 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.2 ", 
+    f"{mychfull}_highPtId.at(RecoLepIdx)>=2 && {mychfull}_miniPFRelIso_all.at(RecoLepIdx) < 0.15", 
+    ]
+
+    labels = [
+    # Loose ID labels
+    "LooseID && miniPFIso_all< 0.4",
+    "LooseID && miniPFIso< 0.25",
+    "LooseID && miniPFIso< 0.2",
+    "LooseID && miniPFIso< 0.15",
+
+    # Medium ID labels
+    "MediumID && miniPFIso< 0.4",
+    "MediumID && miniPFIso< 0.25",
+    "MediumID && miniPFIso< 0.2",
+    "MediumID && miniPFIso< 0.15",
+
+    # Tight ID labels
+    "TightID && miniPFIso< 0.4",
+    "TightID && miniPFIso< 0.25",
+    "TightID && miniPFIso< 0.2",
+    "TightID && miniPFIso< 0.15",
+
+    # Tracker highPt ID labels
+    "Tracker highPt && miniPFIso< 0.4",
+    "Tracker highPt && miniPFIso< 0.25",
+    "Tracker highPt && miniPFIso< 0.2",
+    "Tracker highPt && miniPFIso< 0.15",
+
+        # global highPt ID labels
+    "Global highPt && miniPFIso< 0.4",
+    "Global highPt && miniPFIso< 0.25",
+    "Global highPt && miniPFIso< 0.2",
+    "Global highPt && miniPFIso< 0.15",
+    ]
+
     total_events = df.Count().GetValue()
     efficiencies = []
     for cut, label in zip(cuts, labels):
@@ -736,8 +801,8 @@ def process_genDistribution_hist(mass_point, df_GenSL_Eventstree, df_GenSL_Notse
 #no need def process_mindR_GenLepJet_hist(mass_point, df_GenSL_Eventstree):
     
 ######################################################################run!
-mychannel = "sle"
-#mychannel = "slmuon"
+#mychannel = "sle"
+mychannel = "slmuon"
 if mychannel == "sle":
     mychbrief="e"
     mychfull="Electron"
@@ -748,7 +813,7 @@ if mychannel == "slmuon":
 var = "pt"
 #var = "eta"
 
-hist_type ="cutflow" #!!!NO normalization
+#hist_type ="cutflow" #!!!NO normalization
 #ctype = "Relative"
 ctype = "Cumulative"
 #hist_type = "genDistribution"
